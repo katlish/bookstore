@@ -1,0 +1,10 @@
+.book-card {
+	flex-shrink: 1;
+	flex-basis: auto;
+	width: 260px;
+	.card-title {
+		overflow: hidden;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+}
