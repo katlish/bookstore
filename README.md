@@ -10,9 +10,9 @@ User can have admin or user role.
 # Getting Started 
 
 # Server
-npm i
+npm i\
 nodemon index.js
 
 # Client
-npm i
+npm i\
 npm start
