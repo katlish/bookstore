@@ -11,7 +11,7 @@ module.exports = (req, res, next) => {
 	}
 	const token = authHeader.split(' ')[1];
 	try {
-		decodedToken = jwt.verify(token, process.env.JWT_SECRET);
+		decodedToken = jwt.verify(token, process.env.JWT_PRIVATE_KEY);
 	} catch (err) {
 		err.statusCode = 401;
 		throw err;

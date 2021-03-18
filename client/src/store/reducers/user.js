@@ -6,6 +6,7 @@ const initialState = {
 	error: null,
 	data: {},
 	loggedIn: false,
+	purchaseHistory: []
 };
 
 export default function user(state = initialState, action) {
@@ -25,6 +26,24 @@ export default function user(state = initialState, action) {
 				isLoading: false,
 				loggedIn: true,
 				data: action.payload,
+			};
+		}
+		case actionTypes.FETCH_PURCHASES_BEGIN:
+			return {
+				...state,
+				isLoading: true,
+			};
+		case actionTypes.FETCH_PURCHASES_SUCCESS: {
+			return {
+				...state,
+				isLoading: false,
+				purchaseHistory: action.payload,
+			};
+		}
+		case actionTypes.FETCH_PURCHASES_FAILURE: {
+			return {
+				...state,
+				isLoading: false
 			};
 		}
 		case actionTypes.SET_USER: {

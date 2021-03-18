@@ -5,10 +5,12 @@ import BookFormModal from '../../BookFormModal';
 import './Book.scss';
 
 const Book = ({
+	withBuy,
 	book: { _id, title, price, author, publisher },
 	editable,
 	deleteBook,
 	updateBook,
+	buyBook,
 }) => {
 	const [showEditModal, setShowEditModal] = useState(false);
 	const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(null);
@@ -32,6 +34,13 @@ const Book = ({
 								className="px-1 py-0 text-dark"
 							>
 								<MdDelete />
+							</Button>
+						</div>
+					)}
+					{withBuy && (
+						<div className="ml-auto">
+							<Button variant="success" onClick={() => buyBook()}>
+								BUY
 							</Button>
 						</div>
 					)}

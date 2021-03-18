@@ -41,3 +41,18 @@ export const setUserData = (token) => ({
 		data: { ...jwt(token) },
 	},
 });
+
+export const getUserPurchases = () => async (dispatch) => {
+	try {
+		dispatch({ type: actions.FETCH_PURCHASES_BEGIN });
+		const purchases = await API.get('/user');
+		dispatch({ type: actions.FETCH_PURCHASES_SUCCESS,
+			payload: purchases.data });
+	} catch (e) {
+		dispatch({
+			type: actions.FETCH_PURCHASES_FAILURE,
+			payload: e.message,
+		});
+		throw e;
+	}
+}

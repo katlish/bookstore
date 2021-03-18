@@ -19,6 +19,11 @@ const Header = ({ user, loggedIn, logout, searchHandler }) => {
 							Admin Panel
 						</Link>
 					)}
+					{user?.role === 'user' && (
+						<Link className="nav-link" to="/purchase-history">
+							My Purchases
+						</Link>
+					)}
 				</Nav>
 				{!loggedIn ? (
 					<Link className="nav-link" to="/auth">

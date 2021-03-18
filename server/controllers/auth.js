@@ -56,7 +56,7 @@ exports.login = async (req, res, next) => {
 				userId: loggedinUser._id.toString(),
 				role: loggedinUser.role,
 			},
-			process.env.JWT_SECRET,
+			process.env.JWT_PRIVATE_KEY,
 			{ expiresIn: process.env.JWT_TIME_EXPIRATION },
 		);
 		res.status(200).json({

@@ -4,7 +4,7 @@ exports.get = async (req, res, next) => {
 	try {
 		const books = await Book.find();
 		res.status(200).json(books);
-	} catch (e) {
+	} catch (err) {
 		if (!err.statusCode) {
 			err.statusCode = 500;
 		}
@@ -22,7 +22,7 @@ exports.create = async (req, res, next) => {
 			publisherId,
 		});
 		res.status(201).json(createdBook);
-	} catch (e) {
+	} catch (err) {
 		if (!err.statusCode) {
 			err.statusCode = 500;
 		}
@@ -37,7 +37,7 @@ exports.update = async (req, res, next) => {
 			new: true,
 		});
 		res.status(200).json(updatedBook);
-	} catch (e) {
+	} catch (err) {
 		if (!err.statusCode) {
 			err.statusCode = 500;
 		}
@@ -53,7 +53,7 @@ exports.delete = async (req, res, next) => {
 		}
 		await Book.findByIdAndUpdate(id, { deleted: true });
 		res.status(204).end();
-	} catch (e) {
+	} catch (err) {
 		if (!err.statusCode) {
 			err.statusCode = 500;
 		}
@@ -65,7 +65,7 @@ exports.purchase = async (req, res, next) => {
 	const { booksIds } = req.body;
 	try {
 		res.status(200).json({ mesg: 'success' });
-	} catch (e) {
+	} catch (err) {
 		if (!err.statusCode) {
 			err.statusCode = 500;
 		}

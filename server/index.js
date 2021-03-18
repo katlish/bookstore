@@ -7,6 +7,7 @@ const authRoutes = require('./routes/auth');
 const booksRoutes = require('./routes/books');
 const authorsRoutes = require('./routes/authors');
 const publishersRoutes = require('./routes/publishers');
+const userRoutes =require('./routes/user');
 
 require('dotenv').config();
 
@@ -25,6 +26,7 @@ app.use('/auth', authRoutes);
 app.use('/authors', authorsRoutes);
 app.use('/publishers', publishersRoutes);
 app.use('/books', booksRoutes);
+app.use('/user', userRoutes);
 
 app.use((error, req, res, next) => {
 	const { statusCode, message, data } = error;

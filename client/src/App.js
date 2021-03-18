@@ -5,6 +5,7 @@ import Header from './components/Header';
 import AdminPanel from './containers/AdminPanel';
 import { Container } from 'react-bootstrap';
 import BooksStore from './containers/BooksStore';
+import MyPurchases from './containers/MyPurchases';
 import { fetchAuthors, fetchPublishers } from './store/actions/metadata';
 import { logIn, signUp, logOut, setUserData } from './store/actions/user';
 import { updateQuery } from './store/actions/books';
@@ -29,7 +30,7 @@ function App() {
 	const searchHandler = (query) => {
 		dispatch(updateQuery(query));
 	}
-
+	console.log("user?.role === user", user.role);
 	return (
 		<div className="App">
 			<Header
@@ -59,6 +60,9 @@ function App() {
 					</Route>
 					<Route path="/admin-panel" exact>
 						{user?.role === 'admin' ? <AdminPanel /> : <Redirect to="/store" />}
+					</Route>
+					<Route path="/purchase-history" exact>
+						{user?.role === 'user' ?  <MyPurchases/> : <Redirect to="/store" />}
 					</Route>
 				</Switch>
 			</Container>
